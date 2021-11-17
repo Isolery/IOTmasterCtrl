@@ -1,0 +1,5 @@
+/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles/rebuild_cache.dir
+/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles/edit_cache.dir
+/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/src/CMakeFiles/rebuild_cache.dir
+/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/src/CMakeFiles/IOTmasterCtrl.dir
+/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/src/CMakeFiles/edit_cache.dir

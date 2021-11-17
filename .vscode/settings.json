@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "dev_info.h": "c",
+        "limits": "c",
+        "zlog.h": "c"
+    }
+}

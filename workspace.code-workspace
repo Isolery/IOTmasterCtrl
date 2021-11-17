@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"dev_info.h": "c",
+			"if_arp.h": "c",
+			"my_sqlite3.h": "c",
+			"if.h": "c",
+			"cmath": "c"
+		}
+	}
+}
