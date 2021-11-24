@@ -21,7 +21,7 @@ struct sockaddr_in mr_local;
 struct sockaddr_in mr_dev;
 
 int mr_socket;
-socklen_t len;
+socklen_t slen;
 int send_length;
 
 int cmd;
@@ -208,7 +208,7 @@ void query_hardware_param(void)
         exit(0);
     }
 
-    send_length = sendto(mr_socket, mr_ack_hardware_param, sizeof(mr_ack_hardware_param), 0, (struct sockaddr *)&mr_dev, len);
+    send_length = sendto(mr_socket, mr_ack_hardware_param, sizeof(mr_ack_hardware_param), 0, (struct sockaddr *)&mr_dev, slen);
     if(send_length < 0){
         perror("sendto");
     }else{
@@ -236,7 +236,7 @@ void query_hardware_param(void)
         exit(0);
     }
 
-    ssize_t s = recvfrom(mr_ack, recvbuf, sizeof(recvbuf), 0, (struct sockaddr*)&node, &len);
+    ssize_t s = recvfrom(mr_ack, recvbuf, sizeof(recvbuf), 0, (struct sockaddr*)&node, &slen);
     if(s > 0){
         for(int i=0; i<s; i++)
         {
@@ -327,16 +327,16 @@ void revise_hardware_param(void)
     memcpy(&hardware_param.name, "WS2812B", strlen("WS2812B"));   // 芯片名称
     hardware_param.channel_num = 3072;   // 通道数
     hardware_param.gray_scale = 256;   // 灰度等级
-    hardware_param.clock_frequency = 1800;   // 时钟频率
-    hardware_param.clock_duty = 50;      // 时钟占空比
-    hardware_param.color_num = 1;        // 颜色数
-    hardware_param.bright_adjust = 88;   // 亮度调节
-    hardware_param.bright_channel_A = 12;   // 通道亮度A
-    hardware_param.bright_channel_B = 34;   // 通道亮度B
-    hardware_param.bright_channel_C = 56;   // 通道亮度C
-    hardware_param.bright_channel_D = 78;   // 通道亮度D
+    hardware_param.clock_frequency = 800;   // 时钟频率
+    hardware_param.clock_duty = 70;      // 时钟占空比
+    hardware_param.color_num = 0;        // 颜色数
+    hardware_param.bright_adjust = 100;   // 亮度调节
+    hardware_param.bright_channel_A = 100;   // 通道亮度A
+    hardware_param.bright_channel_B = 100;   // 通道亮度B
+    hardware_param.bright_channel_C = 100;   // 通道亮度C
+    hardware_param.bright_channel_D = 100;   // 通道亮度D
     hardware_param.GAMA = 22;             // GAMA 
-    hardware_param.disconnect_state = 1;    // 信号断开状态
+    hardware_param.disconnect_state = 0;    // 信号断开状态
 
     // 填充硬件参数到数组中
     mr_set_hardware_param4[0] = 0x4d; mr_set_hardware_param4[1] = 0x52; mr_set_hardware_param4[2] = 0x4b; mr_set_hardware_param4[3] = 0x4a; 
@@ -399,44 +399,44 @@ void revise_hardware_param(void)
 
     printf("\n");
 
-    sendto(mr_socket, mr_set_hardware_param1, sizeof(mr_set_hardware_param1), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+    sendto(mr_socket, mr_set_hardware_param1, sizeof(mr_set_hardware_param1), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
 
     for(int i=1; i<=MAX_SUBCTRL_NUM; i++)
     {
         mr_set_hardware_param2[4] = i;
-        sendto(mr_socket, mr_set_hardware_param2, sizeof(mr_set_hardware_param2), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+        sendto(mr_socket, mr_set_hardware_param2, sizeof(mr_set_hardware_param2), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
     }
 
     for(int i=1; i<=MAX_SUBCTRL_NUM; i++)
     {
         mr_set_hardware_param2[4] = i;
-        sendto(mr_socket, mr_set_hardware_param2, sizeof(mr_set_hardware_param2), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+        sendto(mr_socket, mr_set_hardware_param2, sizeof(mr_set_hardware_param2), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
     }
 
     for(int i=1; i<=MAX_SUBCTRL_NUM; i++)
     {
         mr_set_hardware_param3[4] = i;
-        sendto(mr_socket, mr_set_hardware_param3, sizeof(mr_set_hardware_param3), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+        sendto(mr_socket, mr_set_hardware_param3, sizeof(mr_set_hardware_param3), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
     }
     
-    sendto(mr_socket, mr_set_hardware_param0, sizeof(mr_set_hardware_param0), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+    sendto(mr_socket, mr_set_hardware_param0, sizeof(mr_set_hardware_param0), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
 
     for(int i=1; i<=MAX_SUBCTRL_NUM; i++)
     {
         mr_set_hardware_param4[4] = i;
-        sendto(mr_socket, mr_set_hardware_param4, sizeof(mr_set_hardware_param4), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+        sendto(mr_socket, mr_set_hardware_param4, sizeof(mr_set_hardware_param4), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
     }
 
     for(int i=1; i<=MAX_SUBCTRL_NUM; i++)
     {
         mr_set_hardware_param5[4] = i;
-        sendto(mr_socket, mr_set_hardware_param5, sizeof(mr_set_hardware_param5), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+        sendto(mr_socket, mr_set_hardware_param5, sizeof(mr_set_hardware_param5), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
     }
 
     for(int i=1; i<=MAX_SUBCTRL_NUM; i++)
     {
         mr_set_hardware_param6[4] = i;
-        sendto(mr_socket, mr_set_hardware_param6, sizeof(mr_set_hardware_param6), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+        sendto(mr_socket, mr_set_hardware_param6, sizeof(mr_set_hardware_param6), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
     }
 }
 
@@ -445,12 +445,12 @@ void revise_fixid(void)
 {
     printf("revise_fixid...\n");
 
-    sendto(mr_socket, set_fixid0, sizeof(set_fixid0), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+    sendto(mr_socket, set_fixid0, sizeof(set_fixid0), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
 
     for(int i=1; i<=MAX_SUBCTRL_NUM; i++)
     {
         set_fixid1[4] = i; 
-        sendto(mr_socket, set_fixid1, sizeof(set_fixid1), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+        sendto(mr_socket, set_fixid1, sizeof(set_fixid1), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
     }
 
     for(int i=1; i<=MAX_SUBCTRL_NUM; i++)
@@ -458,23 +458,23 @@ void revise_fixid(void)
         set_fixid2[4] = i; 
         set_fixid2[14] = i; 
         set_fixid2[16] = 0xff-i;
-        sendto(mr_socket, set_fixid2, sizeof(set_fixid2), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+        sendto(mr_socket, set_fixid2, sizeof(set_fixid2), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
     }
     
-    sendto(mr_socket, set_fixid3, sizeof(set_fixid3), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
-    sendto(mr_socket, set_fixid4, sizeof(set_fixid4), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+    sendto(mr_socket, set_fixid3, sizeof(set_fixid3), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
+    sendto(mr_socket, set_fixid4, sizeof(set_fixid4), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
 
-    // sendto(mr_socket, set_fixid0, sizeof(set_fixid0), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+    // sendto(mr_socket, set_fixid0, sizeof(set_fixid0), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
 
     // set_fixid1[4] = 2; 
-    // sendto(mr_socket, set_fixid1, sizeof(set_fixid1), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+    // sendto(mr_socket, set_fixid1, sizeof(set_fixid1), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
 
     // set_fixid2[4] = 2; 
     // set_fixid2[16] = 0xfd;
-    // sendto(mr_socket, set_fixid2, sizeof(set_fixid2), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+    // sendto(mr_socket, set_fixid2, sizeof(set_fixid2), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
 
-    // sendto(mr_socket, set_fixid3, sizeof(set_fixid3), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
-    // sendto(mr_socket, set_fixid3, sizeof(set_fixid3), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+    // sendto(mr_socket, set_fixid3, sizeof(set_fixid3), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
+    // sendto(mr_socket, set_fixid3, sizeof(set_fixid3), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
 }
 
 //清除固定ID
@@ -482,28 +482,28 @@ void clear_fixid(void)
 {
     printf("clear_fixid...\n");
 
-    sendto(mr_socket, clear_fixid0, sizeof(clear_fixid0), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+    sendto(mr_socket, clear_fixid0, sizeof(clear_fixid0), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
 
     for(int i=0; i<MAX_SUBCTRL_NUM; i++)
     {
         clear_fixid1[4] = i+1;
-        sendto(mr_socket, clear_fixid1, sizeof(clear_fixid1), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+        sendto(mr_socket, clear_fixid1, sizeof(clear_fixid1), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
     }
 
     for(int i=0; i<MAX_SUBCTRL_NUM; i++)
     {
         clear_fixid2[4] = i+1;
-        sendto(mr_socket, clear_fixid2, sizeof(clear_fixid2), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+        sendto(mr_socket, clear_fixid2, sizeof(clear_fixid2), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
     }
 
-    sendto(mr_socket, clear_fixid3, sizeof(clear_fixid3), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
-    sendto(mr_socket, clear_fixid4, sizeof(clear_fixid4), 0, (struct sockaddr *)&mr_dev, len); usleep(100000);
+    sendto(mr_socket, clear_fixid3, sizeof(clear_fixid3), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
+    sendto(mr_socket, clear_fixid4, sizeof(clear_fixid4), 0, (struct sockaddr *)&mr_dev, slen); usleep(100000);
 }
 
 void subctrl_configuration(void)
 {
     int iOptval = 1;
-    len = sizeof(mr_local);
+    slen = sizeof(mr_local);
 
     // 明瑞分控接口
     mr_socket = socket(AF_INET, SOCK_DGRAM, 0);
@@ -525,17 +525,17 @@ void subctrl_configuration(void)
     inet_aton("255.255.255.255", &mr_dev.sin_addr);
     mr_dev.sin_port = htons(19274);
 
-    for(int i=0; i<10; i++)
-    {
-        send_length = sendto(mr_socket, mr_send_poll, sizeof(mr_send_poll), 0, (struct sockaddr *)&mr_dev, len);
-        if( send_length < 0){
-            perror("sendto");
-        }else{
-            printf("send_length = %d\n", send_length);
-        }
+    // for(int i=0; i<10; i++)
+    // {
+    //     send_length = sendto(mr_socket, mr_send_poll, sizeof(mr_send_poll), 0, (struct sockaddr *)&mr_dev, slen);
+    //     if( send_length < 0){
+    //         perror("sendto");
+    //     }else{
+    //         printf("send_length = %d\n", send_length);
+    //     }
 
-        usleep(100000);
-    }
+    //     usleep(100000);
+    // }
     
     while(1)
     {
@@ -570,4 +570,214 @@ void subctrl_configuration(void)
     }    
 
     
+}
+
+uint8_t readbuf[2048] = {0};
+mr_configuration_t mr_configuration = {0};
+
+uint16_t framebuffer_len = 0;
+uint8_t (*mr_framebuffer)[1472] = NULL;
+uint8_t (*led_location)[18] = NULL;
+
+uint16_t channel_nums(int index)
+{
+    return (led_location[index][8] << 8 | led_location[index][9]);
+}
+
+void channel_nums_w(int index, uint16_t data)
+{
+    led_location[index][8] = (uint8_t)data >> 8;
+    led_location[index][9] = (uint8_t)data;
+}
+
+// 交换两个数组
+void myswap(int a, int b, int len)
+{
+    uint8_t *temp = (uint8_t *)malloc(len);
+
+    memcpy(temp, (uint8_t *)led_location[a], len);
+    memcpy((uint8_t *)led_location[a], (uint8_t *)led_location[b], len);
+    memcpy((uint8_t *)led_location[b], temp, len);
+
+    free(temp);
+}
+
+// 快速排序
+int paritition(int low, int high)
+{
+    uint16_t pivot = channel_nums(low);
+
+    while(low < high)
+    {
+        while(low < high && channel_nums(high) >= pivot)
+        {
+            --high;
+        }
+        myswap(low, high, 18);
+        while(low < high && channel_nums(low) <= pivot)
+        {
+            ++low;
+        }
+        myswap(high, low, 18);
+    }
+
+    channel_nums_w(low, pivot);
+
+    return low;
+}
+
+void quickSort(int low, int high)
+{
+    if(low < high)
+    {
+        int pivot = paritition(low, high);
+        quickSort(low, pivot - 1);
+        quickSort(pivot+1, high);
+    }
+}
+
+//解析明瑞配置文件
+int parse_configuration_file(void)
+{
+    int fd = 0;
+
+    fd = open("/doc/MRkyCfg.bin", O_RDONLY);
+    if(fd < 0){
+        printf("open error!\n");
+        return -1;
+    }
+
+    if(read(fd, readbuf, 64) <= 0){
+        printf("read error!\n");
+    }else{
+        for(int i=0; i<64; i++)
+        {
+            //printf("%02x ", (unsigned char)readbuf[i]);
+        }
+
+        printf("\n");
+
+        //保存配置参数
+        mr_configuration.image_width = readbuf[4] << 8 | readbuf[5];
+        mr_configuration.image_high = readbuf[6] << 8 | readbuf[7];
+
+        mr_configuration.effective_pixels = readbuf[8] << 24 | readbuf[9] << 16 | readbuf[10] << 8 | readbuf[11];
+        mr_configuration.subctrl_num = readbuf[12] << 8 | readbuf[13];
+
+        printf("image size: %ld x %ld\n", mr_configuration.image_width, mr_configuration.image_high);
+        printf("pixels nums: %ld\n", mr_configuration.effective_pixels);
+        printf("subctrl_nums: %ld\n", mr_configuration.subctrl_num);
+    }
+
+    framebuffer_len = (((mr_configuration.effective_pixels * 3) - 1) / 1400) + 1;
+    framebuffer_len = (framebuffer_len > mr_configuration.subctrl_num ? framebuffer_len : mr_configuration.subctrl_num);
+    printf("framebuffer_len: %ld\n", framebuffer_len);
+
+    mr_framebuffer = (uint8_t (*)[1472])malloc(framebuffer_len * 1472);
+    if(mr_framebuffer == NULL){
+        printf("malloc error!\n");
+        return -1;
+    }
+
+    uint16_t index = 0;
+
+    do
+    {
+        lseek(fd, 4096 + 0x600*index, SEEK_SET);
+
+        if(read(fd, readbuf, 64) <= 0){
+            printf("read error!\n");
+            return -1;
+        }else{
+            for(int i=0; i<64; i++)
+            {
+                //printf("%02x ", (unsigned char)readbuf[i]);
+            }
+
+            printf("\n");
+        }
+
+        if(readbuf[42] == 0x4d && readbuf[43] == 0x52 && readbuf[44] == 0x4b && readbuf[45] == 0x4a){
+            lseek(fd, -22, SEEK_CUR);
+
+            if(read(fd, (uint8_t *)mr_framebuffer[index], 1472) <= 0){
+                printf("read error!\n");
+            }else{
+                // for(int i=0; i<1472; i++)
+                // {
+                //     if((i%8 == 0) && (i != 0)) 
+                //         printf(" ");
+                //     if(i%16 == 0)
+                //         printf("\n");
+                //     printf("%02x ", readbuf[i]);
+                // }
+
+                // printf("\n");
+            }
+        }else{break;}
+
+        index++;
+    }while(1);
+
+    printf("framebuffer_len: %ld\n", framebuffer_len);
+
+    // for(int j=0; j<framebuffer_len; j++)
+    // {
+    //     for(int i=0; i<1472; i++)
+    //     {
+    //         if((i%8 == 0) && (i != 0)) 
+    //             printf(" ");
+    //         if(i%16 == 0)
+    //             printf("\n");
+    //         printf("%02x ", mr_framebuffer[j][i]);
+    //     }
+
+    //     printf("\n");
+    // }
+
+    // 提取灯的点位信息
+    lseek(fd, -64, SEEK_CUR);
+
+    led_location = (uint8_t (*)[18])malloc(mr_configuration.effective_pixels * 18);
+
+    for(int i=0; i<mr_configuration.effective_pixels; i++)
+    {
+        if(read(fd, led_location[i], 18) <= 0){
+            printf("read error!\n");
+        }else{
+            //
+        }
+    }
+
+    printf("\n");
+    
+    // for(int j=0; j<mr_configuration.effective_pixels; j++)
+    // {
+    //     for(int i=0; i<18; i++)
+    //     {
+    //         printf("%02x ", led_location[j][i]);
+    //     }
+
+    //     printf("\n");
+    // }
+
+    // printf("\n");
+
+    quickSort(0, mr_configuration.effective_pixels-1);
+
+    // printf("\n");
+    
+    // for(int j=0; j<mr_configuration.effective_pixels; j++)
+    // {
+    //     for(int i=0; i<18; i++)
+    //     {
+    //         printf("%02x ", led_location[j][i]);
+    //     }
+
+    //     printf("\n");
+    // }
+
+    // printf("\n");
+
+    return -1;
 }

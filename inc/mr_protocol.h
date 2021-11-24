@@ -21,9 +21,17 @@ typedef struct{
     uint8_t bright_channel_D;    // 通道亮度D
     uint8_t GAMA;                // GAMA
     uint16_t disconnect_state;    // 信号断开状态
-
 }hardware_param_t;
+
+typedef struct{
+    uint16_t image_width;        // 图像宽度
+    uint16_t image_high;         // 图像高度
+    uint32_t effective_pixels;   // 有效像素
+    uint16_t subctrl_num;        // 分控数量
+}mr_configuration_t;
+
 void subctrl_configuration(void);
+int parse_configuration_file(void);
 
 #if defined(__cplusplus)
 }

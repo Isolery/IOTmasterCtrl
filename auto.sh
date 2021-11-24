@@ -15,3 +15,9 @@ make clean
 make 
 cd ..
 cp ./bin/IOTmasterCtrl /home/book/nfs_rootfs/
+
+# cd build/
+# make clean
+# make 
+# cd ..
+# ./bin/IOTmasterCtrl
