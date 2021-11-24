@@ -270,7 +270,7 @@ void *thread_send_rgbdata(void *arg)
         usleep(1);
         sendto(mr_socket, send_poll2, sizeof(send_poll2), 0, (struct sockaddr *) &mr_dev, slen);
 
-        usleep(15000);
+        usleep(5000);
 
         real_frame_len = 0;
         rgb_index = 0;
