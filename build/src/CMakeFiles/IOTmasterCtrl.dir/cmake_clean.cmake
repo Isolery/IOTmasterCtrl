@@ -7,8 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/IOTmasterCtrl.dir/main_ctrl.c.o.d"
   "CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o"
   "CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o.d"
-  "CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o"
-  "CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

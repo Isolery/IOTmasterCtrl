@@ -11,7 +11,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/mnt/hgfs/Winshare/Project/IOTmasterCtrl/src/dev_info.c" "src/CMakeFiles/IOTmasterCtrl.dir/dev_info.c.o" "gcc" "src/CMakeFiles/IOTmasterCtrl.dir/dev_info.c.o.d"
   "/mnt/hgfs/Winshare/Project/IOTmasterCtrl/src/main_ctrl.c" "src/CMakeFiles/IOTmasterCtrl.dir/main_ctrl.c.o" "gcc" "src/CMakeFiles/IOTmasterCtrl.dir/main_ctrl.c.o.d"
   "/mnt/hgfs/Winshare/Project/IOTmasterCtrl/src/mr_protocol.c" "src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o" "gcc" "src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o.d"
-  "/mnt/hgfs/Winshare/Project/IOTmasterCtrl/src/my_sqlite3.c" "src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o" "gcc" "src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o.d"
   )
 
 # Targets to which this target links.

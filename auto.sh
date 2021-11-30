@@ -7,6 +7,7 @@
 # make clean
 # make VERBOSE=1
 
+# 交叉编译
 rm -rf build/
 mkdir build/
 cd ./build
@@ -16,8 +17,11 @@ make
 cd ..
 cp ./bin/IOTmasterCtrl /home/book/nfs_rootfs/
 
-# cd build/
+# gcc编译
+# rm -rf build/
+# mkdir build/
+# cd ./build
+# cmake ..
 # make clean
 # make 
 # cd ..
-# ./bin/IOTmasterCtrl

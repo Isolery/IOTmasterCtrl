@@ -10,7 +10,8 @@
 			"if_arp.h": "c",
 			"my_sqlite3.h": "c",
 			"if.h": "c",
-			"cmath": "c"
+			"cmath": "c",
+			"signal.h": "c"
 		}
 	}
 }

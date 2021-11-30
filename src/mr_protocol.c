@@ -749,7 +749,7 @@ void subctrl_configuration(void)
     //     usleep(100000);
     // }
     
-    while(1)
+    while(0)
     {
         printf("***************************************************************\n");
         printf("1:返回硬件参数 2:写入硬件参数 3:写入固定ID 4:清除固定ID 5:退出.\n");
@@ -906,7 +906,7 @@ int parse_configuration_file(void)
                 //printf("%02x ", (unsigned char)readbuf[i]);
             }
 
-            printf("\n");
+            //printf("\n");
         }
 
         if(readbuf[42] == 0x4d && readbuf[43] == 0x52 && readbuf[44] == 0x4b && readbuf[45] == 0x4a){

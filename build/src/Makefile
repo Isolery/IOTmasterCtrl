@@ -202,30 +202,6 @@ mr_protocol.c.s:
 	cd /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/IOTmasterCtrl.dir/build.make src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.s
 .PHONY : mr_protocol.c.s
 
-my_sqlite3.o: my_sqlite3.c.o
-.PHONY : my_sqlite3.o
-
-# target to build an object file
-my_sqlite3.c.o:
-	cd /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/IOTmasterCtrl.dir/build.make src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o
-.PHONY : my_sqlite3.c.o
-
-my_sqlite3.i: my_sqlite3.c.i
-.PHONY : my_sqlite3.i
-
-# target to preprocess a source file
-my_sqlite3.c.i:
-	cd /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/IOTmasterCtrl.dir/build.make src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.i
-.PHONY : my_sqlite3.c.i
-
-my_sqlite3.s: my_sqlite3.c.s
-.PHONY : my_sqlite3.s
-
-# target to generate assembly for a file
-my_sqlite3.c.s:
-	cd /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/IOTmasterCtrl.dir/build.make src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.s
-.PHONY : my_sqlite3.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -244,9 +220,6 @@ help:
 	@echo "... mr_protocol.o"
 	@echo "... mr_protocol.i"
 	@echo "... mr_protocol.s"
-	@echo "... my_sqlite3.o"
-	@echo "... my_sqlite3.i"
-	@echo "... my_sqlite3.s"
 .PHONY : help
 
 

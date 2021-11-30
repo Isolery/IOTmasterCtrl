@@ -97,24 +97,10 @@ src/CMakeFiles/IOTmasterCtrl.dir/dev_info.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/IOTmasterCtrl.dir/dev_info.c.s"
 	cd /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/src && /usr/local/arm/m3568-sdk-v1.0.0-ga/gcc-buildroot-9.3.0-2020.03-x86_64_aarch64-rockchip-linux-gnu/bin/aarch64-linux-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/hgfs/Winshare/Project/IOTmasterCtrl/src/dev_info.c -o CMakeFiles/IOTmasterCtrl.dir/dev_info.c.s
 
-src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o: src/CMakeFiles/IOTmasterCtrl.dir/flags.make
-src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o: ../src/my_sqlite3.c
-src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o: src/CMakeFiles/IOTmasterCtrl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o"
-	cd /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/src && /usr/local/arm/m3568-sdk-v1.0.0-ga/gcc-buildroot-9.3.0-2020.03-x86_64_aarch64-rockchip-linux-gnu/bin/aarch64-linux-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o -MF CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o.d -o CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o -c /mnt/hgfs/Winshare/Project/IOTmasterCtrl/src/my_sqlite3.c
-
-src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.i"
-	cd /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/src && /usr/local/arm/m3568-sdk-v1.0.0-ga/gcc-buildroot-9.3.0-2020.03-x86_64_aarch64-rockchip-linux-gnu/bin/aarch64-linux-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/hgfs/Winshare/Project/IOTmasterCtrl/src/my_sqlite3.c > CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.i
-
-src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.s"
-	cd /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/src && /usr/local/arm/m3568-sdk-v1.0.0-ga/gcc-buildroot-9.3.0-2020.03-x86_64_aarch64-rockchip-linux-gnu/bin/aarch64-linux-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/hgfs/Winshare/Project/IOTmasterCtrl/src/my_sqlite3.c -o CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.s
-
 src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o: src/CMakeFiles/IOTmasterCtrl.dir/flags.make
 src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o: ../src/mr_protocol.c
 src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o: src/CMakeFiles/IOTmasterCtrl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o"
 	cd /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/src && /usr/local/arm/m3568-sdk-v1.0.0-ga/gcc-buildroot-9.3.0-2020.03-x86_64_aarch64-rockchip-linux-gnu/bin/aarch64-linux-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o -MF CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o.d -o CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o -c /mnt/hgfs/Winshare/Project/IOTmasterCtrl/src/mr_protocol.c
 
 src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.i: cmake_force
@@ -129,7 +115,6 @@ src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.s: cmake_force
 IOTmasterCtrl_OBJECTS = \
 "CMakeFiles/IOTmasterCtrl.dir/main_ctrl.c.o" \
 "CMakeFiles/IOTmasterCtrl.dir/dev_info.c.o" \
-"CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o" \
 "CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o"
 
 # External object files for target IOTmasterCtrl
@@ -137,11 +122,10 @@ IOTmasterCtrl_EXTERNAL_OBJECTS =
 
 ../bin/IOTmasterCtrl: src/CMakeFiles/IOTmasterCtrl.dir/main_ctrl.c.o
 ../bin/IOTmasterCtrl: src/CMakeFiles/IOTmasterCtrl.dir/dev_info.c.o
-../bin/IOTmasterCtrl: src/CMakeFiles/IOTmasterCtrl.dir/my_sqlite3.c.o
 ../bin/IOTmasterCtrl: src/CMakeFiles/IOTmasterCtrl.dir/mr_protocol.c.o
 ../bin/IOTmasterCtrl: src/CMakeFiles/IOTmasterCtrl.dir/build.make
 ../bin/IOTmasterCtrl: src/CMakeFiles/IOTmasterCtrl.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable ../../bin/IOTmasterCtrl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable ../../bin/IOTmasterCtrl"
 	cd /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/IOTmasterCtrl.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

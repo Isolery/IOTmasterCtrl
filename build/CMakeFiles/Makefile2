@@ -96,12 +96,12 @@ src/clean: src/CMakeFiles/IOTmasterCtrl.dir/clean
 src/CMakeFiles/IOTmasterCtrl.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/IOTmasterCtrl.dir/build.make src/CMakeFiles/IOTmasterCtrl.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/IOTmasterCtrl.dir/build.make src/CMakeFiles/IOTmasterCtrl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target IOTmasterCtrl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles --progress-num=1,2,3,4 "Built target IOTmasterCtrl"
 .PHONY : src/CMakeFiles/IOTmasterCtrl.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/IOTmasterCtrl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/IOTmasterCtrl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/hgfs/Winshare/Project/IOTmasterCtrl/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/IOTmasterCtrl.dir/rule
