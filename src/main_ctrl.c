@@ -41,6 +41,13 @@ dev_info_t dev_info[MAX_INTERFACE];
 
 uint8_t send_poll1[] = {0x4d, 0x52, 0x4b, 0x4a, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 uint8_t send_poll2[] = {0x4d, 0x52, 0x4b, 0x4a, 0xff, 0xff, 0x00, 0x0e, 0x00, 0x10, 0x00, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00};
+uint8_t send_poll3[] = {
+    0x4d, 0x52, 0x4b, 0x4a, 0xff, 0xff,
+    0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xf6, 0xb5, 0xdd, 0x1c, 0xfa, 0x51, 0x00, 0x1b,
+    0x24, 0xcd, 0xd0, 0xe8, 0x08, 0x00, 0x45, 0x00, 0x01, 0x20, 0x01, 0x00, 0x00, 0x00, 0x20, 0x11,
+    0x10, 0xaa, 0xc0, 0xa8, 0xc7, 0x7b, 0xff, 0xff, 0xff, 0xff, 0x11, 0x11, 0x11, 0x11, 0x01, 0x0c,
+    0x00, 0x00
+};
 
 char sendbuf[1024];
 char recvbuf[1024];
@@ -185,20 +192,6 @@ void *thread_send_rgbdata(void *arg)
 			}
 		}while(!(strncmp(arecvmsg.text, "start", 5) == 0));
 
-        // send rgb data...
-        // printf("rgb_buffer = %d\n", (int)rgb_buffer[0][0]);
-
-        // memset(&asendmsg, 0, sizeof(asendmsg));
-		// asendmsg.type = 200;
-		// memcpy(asendmsg.text, "OK", 2);
-
-		// if(msgsnd(msg_id, (void *)&asendmsg, 128, 0) < 0){
-		// 	printf("send msg error \n");
-		// 	return 0;
-		// }
-
-        // continue;
-        
         for(int framebuffer_index=0; framebuffer_index<framebuffer_len; framebuffer_index++)
         {
             if(mr_framebuffer[framebuffer_index][0] == 0x4d && mr_framebuffer[framebuffer_index][1] == 0x52 && mr_framebuffer[framebuffer_index][2] == 0x4b && mr_framebuffer[framebuffer_index][3] == 0x4a){
@@ -230,73 +223,58 @@ void *thread_send_rgbdata(void *arg)
 
                             rgbw = htonl(rgb_buffer[axis_y][axis_x]);
 
-                            // printf("(%d, ", axis_y);
-                            // printf(" %d)", axis_x);
-                            // printf("\n");
+                        // src = BGRA 
+                        // dst = GRBA
 
-                            p_framebuffer[i] = rgbw >> 24;    // R
-                        }else if(loop_cnt%3 == 1){
                             p_framebuffer[i] = rgbw >> 16;    // G
+                        }else if(loop_cnt%3 == 1){
+                            p_framebuffer[i] = rgbw >> 8;     // R
                         }else if(loop_cnt%3 == 2){
-                            p_framebuffer[i] = rgbw >> 8;     // B
+                            p_framebuffer[i] = rgbw >> 24;    // B
                         }
 
                         loop_cnt++;
                     }
+
+                    printf("\n");
 
                     p_framebuffer+=len;
                 }
             }else{
                 break;
             }
-
-            // for(int i=0; i<1472; i++)
-            // {
-            //     if((i%8 == 0) && (i != 0)) 
-            //         printf(" ");
-            //     if(i%16 == 0)
-            //         printf("\n");
-            //     printf("%02x ", mr_framebuffer[framebuffer_index][i]);
-            // }
-
-            // printf("\n");
         }
 
         // 发送一帧数据
         for(int i=0; i<real_frame_len; i++)
         {
-            // for(int j=0; j<14; j++)
-            // {
-            //     printf("%02x ", (uint8_t)mr_framebuffer[i][j]);
-            // }
-            // printf("\n");
-            
             send_length = sendto(mr_socket, (char *)mr_framebuffer[i], 1472, 0, (struct sockaddr *)&mr_dev, slen);
-            if(send_length < 0){
-                perror("sendto");
-            }else{
-                printf("send_length = %d\n", send_length);
-            }
+            // if(send_length < 0){
+            //     perror("sendto");
+            // }else{
+            //     printf("send_length = %d\n", send_length);
+            // }
             usleep(100);
         }
 
         sendto(mr_socket, send_poll1, sizeof(send_poll1), 0, (struct sockaddr *) &mr_dev, slen);
         usleep(1);
         sendto(mr_socket, send_poll2, sizeof(send_poll2), 0, (struct sockaddr *) &mr_dev, slen);
+        usleep(1);
+        sendto(mr_socket, send_poll3, sizeof(send_poll3), 0, (struct sockaddr *) &mr_dev, slen);
 
         real_frame_len = 0;
-        rgb_index = 0;
+        rgb_index = -1;
         loop_cnt = 0;
         index = 0;
 
-        printf("cnt = %d\n", cnt);
+        //printf("cnt = %d\n", cnt);
 
         //usleep(5000);
 
-        // send ok to msg queue
         memset(&asendmsg, 0, sizeof(asendmsg));
 		asendmsg.type = 200;
-		memcpy(asendmsg.text, "OK", 2);
+   		memcpy(asendmsg.text, "OK", 2);
 
 		if(msgsnd(msg_id, (void *)&asendmsg, 128, 0) < 0){
 			printf("send msg error \n");

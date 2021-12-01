@@ -749,7 +749,7 @@ void subctrl_configuration(void)
     //     usleep(100000);
     // }
     
-    while(0)
+    while(1)
     {
         printf("***************************************************************\n");
         printf("1:返回硬件参数 2:写入硬件参数 3:写入固定ID 4:清除固定ID 5:退出.\n");
@@ -978,18 +978,21 @@ int parse_configuration_file(void)
     quickSort(0, mr_configuration.effective_pixels-1);
 
     // printf("\n");
-    
-    // for(int j=0; j<mr_configuration.effective_pixels; j++)
-    // {
-    //     for(int i=0; i<18; i++)
-    //     {
-    //         printf("%02x ", led_location[j][i]);
-    //     }
 
-    //     printf("\n");
-    // }
+#if 0    
+    for(int j=0; j<mr_configuration.effective_pixels; j++)
+    {
+         for(int i=0; i<18; i++)
+         {
+             printf("%02x ", led_location[j][i]);
+         }
 
-    // printf("\n");
+         printf("\n");
+    }
+
+#endif
+
+     printf("\n");
 
     return -1;
 }
